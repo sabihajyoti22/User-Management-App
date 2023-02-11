@@ -21,7 +21,7 @@ app.use("/api/users", userRouter)
 
 app.use("/",(req,res)=>{
     res.statusCode = 200;
-      res.send("<h1>Welcome to User Managemnt App</h1>")
+    res.send("<h1>Welcome to User Managemnt App</h1>")
 })
 
 // Route not found error
