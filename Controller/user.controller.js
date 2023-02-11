@@ -1,16 +1,16 @@
-const {v4 : uuid} = require("uuid")
+const { v4: uuid } = require("uuid")
 const userSchema = require("../Model/user.model")
 
-const getUser = async (req,res)=>{
+const getUser = async (req, res) => {
     try {
         const users = await userSchema.find()
         res.status(200).json(users);
-      } catch (error) {
+    } catch (error) {
         res.status(500).send(error.message);
-      }
+    }
 }
 
-const createUser = (req,res)=>{
+const createUser = (req, res) => {
     try {
         const user = userSchema({
             id: uuid(),
@@ -24,26 +24,26 @@ const createUser = (req,res)=>{
     }
 }
 
-const updateUser = async(req,res)=>{
+const updateUser = async (req, res) => {
     try {
-       const selectedUser = await userSchema.findOne({id: req.params.id})
-       selectedUser.name = req.body.name
-       selectedUser.email = req.body.email
-       await selectedUser.save()
-       res.status(202).send("<h1>Updated one user</h1>")
+        const selectedUser = await userSchema.findOne({ id: req.params.id })
+        selectedUser.name = req.body.name
+        selectedUser.email = req.body.email
+        await selectedUser.save()
+        res.status(202).send("<h1>Updated one user</h1>")
     } catch (error) {
         res.send(error.message)
     }
 }
 
-const deleteUser = async(req,res)=>{
-    try{
-        await userSchema.deleteOne({id: req.params.id})
+const deleteUser = async(req, res) => {
+    try {
+        await userSchema.deleteOne({ id: req.params.id })
         res.status(203).send("<h1>Deleted one user</h1>")
-    }catch(error){
+    } catch (error) {
         res.send(error.message)
     }
 }
 
 
-module.exports = {getUser, createUser, updateUser, deleteUser}
+module.exports = { getUser, createUser, updateUser, deleteUser }

@@ -31,7 +31,7 @@ app.use((req,res,next)=>{
   })
 // Server error
 app.use((error,req,res,next)=>{
-  res.statusCode = 200;
+  res.statusCode = 500;
     res.send("<h1>Server Error</h1>")
 })
 
