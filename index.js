@@ -1,4 +1,4 @@
-const app = require("./newapp")
+const app = require("./app")
 const config = require("./Config/config")
 
 const PORT = config.app.port
